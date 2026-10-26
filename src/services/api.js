@@ -1,4 +1,5 @@
-const API_URL = import.meta.env.VITE_API_URL || 'https://ajaia-doc-editor-mzic.onrender.com/api'
+const configuredApiUrl = (import.meta.env.VITE_API_URL || 'https://ajaia-doc-editor-mzic.onrender.com/api').trim().replace(/\/+$/, '')
+const API_URL = configuredApiUrl.endsWith('/api') ? configuredApiUrl : `${configuredApiUrl}/api`
 
 export function getToken() {
   return window.localStorage.getItem('ajaia-token')
